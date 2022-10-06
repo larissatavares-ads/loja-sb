@@ -1,13 +1,11 @@
-package com.lojaVirtual.lojasb.daos;
+package com.lojaVirtual.lojasb.repositories;
 
-import com.lojaVirtual.lojasb.models.Produto;
-import com.lojaVirtual.lojasb.repositories.ProdutoRepository;
+import com.lojaVirtual.lojasb.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,8 +19,8 @@ public class JdbcProdutoRepository implements ProdutoRepository {
     }
     @Override
     public int save(Produto produto) {
-        return jdbcTemplate.update(
-                "insert into produto (Nome, Descricao) VALUES ('?', '?')",
+        return  jdbcTemplate.update(
+                "insert into produto (Nome, Descricao) VALUES (?,?)",
                 produto.getNome(), produto.getDescricao());
     }
     @Override
@@ -75,7 +73,6 @@ public class JdbcProdutoRepository implements ProdutoRepository {
                         ))
         );
     }
-
     @Override
     public String getNameById(int id) {
         return jdbcTemplate.queryForObject(

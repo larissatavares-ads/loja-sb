@@ -1,7 +1,6 @@
-package com.lojaVirtual.lojasb;
+package com.lojaVirtual.lojasb.repositories;
 
-import com.lojaVirtual.lojasb.daos.JdbcProdutoRepository;
-import com.lojaVirtual.lojasb.models.Produto;
+import com.lojaVirtual.lojasb.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -23,7 +22,6 @@ public class NamedParameterJdbcProdutoRepository extends JdbcProdutoRepository {
                 "update produto set Descricao = :descricao where Id = :id",
                 new BeanPropertySqlParameterSource(produto));
     }
-
     @Override
     public Optional<Produto> findById(int id) {
         return namedParameterJdbcTemplate.queryForObject(
@@ -37,7 +35,6 @@ public class NamedParameterJdbcProdutoRepository extends JdbcProdutoRepository {
                         ))
         );
     }
-
     @Override
     public List<Produto> findByName(String nome) {
 

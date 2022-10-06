@@ -1,4 +1,4 @@
-package com.lojaVirtual.lojasb.models;
+package com.lojaVirtual.lojasb;
 
 public class Produto {
     private int Id;

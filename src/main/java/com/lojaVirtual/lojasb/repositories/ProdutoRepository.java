@@ -1,17 +1,22 @@
 package com.lojaVirtual.lojasb.repositories;
 
-import com.lojaVirtual.lojasb.models.Produto;
+import com.lojaVirtual.lojasb.Produto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProdutoRepository {
-    int count();
+    //CREATE
     int save(Produto produto);
-    int updateDescricao(Produto produto);
-    int deleteById(int id);
+    //READ
+    int count();
     List<Produto> findAll();
     List<Produto> findByName(String nome);
     Optional<Produto> findById(int id);
     String getNameById(int id);
+    //UPDATE
+    int updateDescricao(Produto produto);
+    //DELETE
+    int deleteById(int id);
+
 }
