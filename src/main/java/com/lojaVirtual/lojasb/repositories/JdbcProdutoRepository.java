@@ -48,6 +48,12 @@ public class JdbcProdutoRepository implements ProdutoRepository {
         );
     }
     @Override
+    public List<Produto> findAll() {
+        return jdbcTemplate.query(
+                "select * from produto", produtoRowMapper
+        );
+    }
+    @Override
     public List<Produto> findByName(String nome) {
         return jdbcTemplate.query(
                 "select * from produto where Nome like ?",

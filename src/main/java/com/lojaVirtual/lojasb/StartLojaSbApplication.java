@@ -40,36 +40,36 @@ public class StartLojaSbApplication implements CommandLineRunner {
 	}
 	void runJDBC() {
 
-		log.info("############Creating tables for testing...");
-
-		jdbcTemplate.execute("DROP TABLE produto;");
-		jdbcTemplate.execute("CREATE TABLE produto(" +
-				"Id int IDENTITY(1,1) PRIMARY KEY, Nome VARCHAR(255), Descricao VARCHAR(500))");
-
-		List<Produto> produtos = Arrays.asList(
-				new Produto(1, "Notebook","Acer Nitro"),
-				new Produto(1, "Celular", "Samsung"),
-				new Produto(1, "JBL", "GO2"),
-				new Produto(1, "Notebook", "Lenovo Ideapad")
-		);
-
-		log.info("####[SAVE]");
-
-		produtos.forEach(produto -> {
-			log.info("####Saving...{}", produto.getNome());
-			produtoRepository.save(produto);
-		});
-
-      // count
-		log.info("###[COUNT] Total produtos: {}", produtoRepository.count());
+//		log.info("############Creating tables for testing...");
 //
+//		jdbcTemplate.execute("DROP TABLE produto;");
+//		jdbcTemplate.execute("CREATE TABLE produto(" +
+//				"Id int IDENTITY(1,1) PRIMARY KEY, Nome VARCHAR(255), Descricao VARCHAR(500))");
+//
+//		List<Produto> produtos = Arrays.asList(
+//				new Produto(1, "Notebook","Acer Nitro"),
+//				new Produto(1, "Celular", "Samsung"),
+//				new Produto(1, "JBL", "GO2"),
+//				new Produto(1, "Notebook", "Lenovo Ideapad")
+//		);
+//
+//		log.info("####[SAVE]");
+//
+//		produtos.forEach(produto -> {
+//			log.info("####Saving...{}", produto.getNome());
+//			produtoRepository.save(produto);
+//		});
+//
+//      // count
+//		log.info("###[COUNT] Total produtos: {}", produtoRepository.count());
+
 //		// find all
 //		log.info("####[FIND_ALL] {}", produtoRepository.findAll());
 //
-//		// find by name
-//		log.info("[FIND_BY_NAME] : like '%Notebook%'");
-//		log.info("{}", produtoRepository.findByName("Notebook"));
-//
+		// find by name
+		log.info("[FIND_BY_NAME] : like '%Notebook%'");
+		log.info("{}", produtoRepository.findByName("Notebook"));
+
 //		// find by id
 //		log.info("[FIND_BY_ID] :1");
 //		Produto produto = produtoRepository.findById(1).orElseThrow(IllegalArgumentException::new);
